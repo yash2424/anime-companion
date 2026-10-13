@@ -2,16 +2,16 @@
 .env
 
 # Recreated by download_assets.py / npm install
-.venv/
-models/
-runtime/
-downloads/
+/.venv/
+/models/
+/runtime/
+/downloads/
 desktop/node_modules/
 web/models/*
 !web/models/avatars.json
 
 # Local chat history and logs (private)
-data/
+/data/
 
 # Personal / editor files
 extra_assets*/

@@ -1,0 +1,273 @@
+{
+  "_help": "One entry per Live2D model. 'model' is relative to web/. 'mouth' is the parameter driven by lip sync. 'zoom' > 1 crops closer (upper body), 'y' shifts the model up (-) or down (+) as a fraction of its height. 'emotions' maps the tags the AI can use to an expression name and/or [motion group, index]. To add your own model: drop its runtime folder into web/models/<id>/ and add an entry here.",
+  "mao": {
+    "name": "Mao",
+    "blurb": "Young witch-in-training with a big hat and rainbow hair. Bright, energetic, lots of expressions.",
+    "model": "models/mao/mao_pro.model3.json",
+    "mouth": "ParamA",
+    "zoom": 1.6,
+    "y": 0.03,
+    "credit": "Niziiro Mao © Live2D Inc.",
+    "emotions": {
+      "neutral": {
+        "expression": "exp_01"
+      },
+      "happy": {
+        "expression": "exp_02"
+      },
+      "excited": {
+        "expression": "exp_04"
+      },
+      "sad": {
+        "expression": "exp_05"
+      },
+      "shy": {
+        "expression": "exp_06"
+      },
+      "surprised": {
+        "expression": "exp_07"
+      },
+      "angry": {
+        "expression": "exp_08"
+      },
+      "thinking": {
+        "expression": "exp_01"
+      }
+    }
+  },
+  "koharu": {
+    "name": "Koharu",
+    "blurb": "Tiny chibi (SD) girl. The most childlike and bouncy of the set; plays a tambourine and waves flags.",
+    "model": "models/koharu/koharu.model3.json",
+    "mouth": "PARAM_MOUTH_OPEN_Y",
+    "zoom": 1.0,
+    "y": 0,
+    "credit": "Koharu © Live2D Inc.",
+    "emotions": {
+      "happy": {
+        "motion": [
+          "Tap",
+          0
+        ]
+      },
+      "excited": {
+        "motion": [
+          "Tap",
+          1
+        ]
+      },
+      "surprised": {
+        "motion": [
+          "FlickUp",
+          0
+        ]
+      },
+      "sad": {
+        "motion": [
+          "FlickDown",
+          0
+        ]
+      }
+    }
+  },
+  "tsumiki": {
+    "name": "Tsumiki",
+    "blurb": "Soft, sweet schoolgirl with an umbrella motif; gentle and cute. Many expressions and motions.",
+    "model": "models/tsumiki/tsumiki.model3.json",
+    "mouth": "PARAM_MOUTH_OPEN_Y",
+    "zoom": 1.7,
+    "y": 0.03,
+    "credit": "Tsumiki Harugasa — illustration by Ogipote, model © Live2D Inc.",
+    "emotions": {
+      "neutral": {
+        "expression": "Normal"
+      },
+      "happy": {
+        "expression": "f01"
+      },
+      "excited": {
+        "expression": "f02"
+      },
+      "sad": {
+        "expression": "Sad"
+      },
+      "angry": {
+        "expression": "Angry"
+      },
+      "surprised": {
+        "expression": "Surprised"
+      },
+      "shy": {
+        "expression": "Blushing"
+      }
+    }
+  },
+  "hibiki": {
+    "name": "Hibiki",
+    "blurb": "Cheerful girl from Live2D's classic alarm-clock app. Simple and friendly.",
+    "model": "models/hibiki/hibiki.model3.json",
+    "mouth": "PARAM_MOUTH_OPEN_Y",
+    "zoom": 1.7,
+    "y": 0.03,
+    "credit": "Hibiki © Live2D Inc.",
+    "emotions": {
+      "neutral": {
+        "expression": "Normal"
+      },
+      "happy": {
+        "expression": "f01"
+      },
+      "sad": {
+        "expression": "Sad"
+      },
+      "angry": {
+        "expression": "Angry"
+      },
+      "surprised": {
+        "expression": "Surprised"
+      },
+      "shy": {
+        "expression": "Blushing"
+      }
+    }
+  },
+  "izumi": {
+    "name": "Izumi",
+    "blurb": "Calm, pretty girl in a school uniform; more mature and composed.",
+    "model": "models/izumi/izumi_illust.model3.json",
+    "mouth": "PARAM_MOUTH_OPEN_Y",
+    "zoom": 1.0,
+    "y": 0,
+    "credit": "Izumi © Live2D Inc.",
+    "emotions": {
+      "neutral": {
+        "expression": "Normal.exp3.json"
+      },
+      "happy": {
+        "expression": "Smile.exp3.json"
+      },
+      "excited": {
+        "expression": "f01.exp3.json"
+      },
+      "sad": {
+        "expression": "Sad.exp3.json"
+      },
+      "angry": {
+        "expression": "Angry.exp3.json"
+      },
+      "surprised": {
+        "expression": "Surprised.exp3.json"
+      },
+      "shy": {
+        "expression": "Blushing.exp3.json"
+      }
+    }
+  },
+  "epsilon": {
+    "name": "Epsilon",
+    "blurb": "Energetic sci-fi girl with headphones-style gear; sporty and playful.",
+    "model": "models/epsilon/Epsilon.model3.json",
+    "mouth": "PARAM_MOUTH_OPEN_Y",
+    "zoom": 1.0,
+    "y": 0,
+    "credit": "Epsilon © Live2D Inc.",
+    "emotions": {
+      "neutral": {
+        "expression": "Normal.exp3.json"
+      },
+      "happy": {
+        "expression": "Smile.exp3.json"
+      },
+      "excited": {
+        "expression": "f01.exp3.json"
+      },
+      "sad": {
+        "expression": "Sad.exp3.json"
+      },
+      "angry": {
+        "expression": "Angry.exp3.json"
+      },
+      "surprised": {
+        "expression": "Surprised.exp3.json"
+      },
+      "shy": {
+        "expression": "Blushing.exp3.json"
+      }
+    }
+  },
+  "shizuku": {
+    "name": "Shizuku",
+    "blurb": "Big-eyed, round-faced cute girl from the 'Shizuku Talk' app; very kawaii.",
+    "model": "models/shizuku/shizuku.model3.json",
+    "mouth": "PARAM_MOUTH_OPEN_Y",
+    "zoom": 1.0,
+    "y": 0,
+    "credit": "Shizuku © Live2D Inc.",
+    "emotions": {
+      "happy": {
+        "motion": [
+          "Tap",
+          0
+        ]
+      },
+      "surprised": {
+        "motion": [
+          "FlickUp",
+          0
+        ]
+      }
+    }
+  },
+  "zundamon": {
+    "name": "Zundamon",
+    "blurb": "Green edamame fairy mascot with a lively, mischievous personality. 50+ expressions and poses.",
+    "model": "models/zundamon/zundamon.model3.json",
+    "mouth": "ParamMouthOpenY",
+    "zoom": 1.35,
+    "y": 0.12,
+    "credit": "Zundamon — illustration by Sakamoto Ahiru (Tohoku Zunko & Zundamon Project), model © Live2D Inc.",
+    "emotions": {
+      "neutral": {
+        "expression": "exp_01"
+      },
+      "happy": {
+        "expression": "exp_smile"
+      },
+      "excited": {
+        "expression": "exp_laugh"
+      },
+      "sad": {
+        "expression": "exp_sad"
+      },
+      "angry": {
+        "expression": "exp_angry"
+      },
+      "surprised": {
+        "expression": "exp_surprise"
+      },
+      "shy": {
+        "expression": "exp_shy"
+      }
+    }
+  },
+  "kei": {
+    "name": "Kei",
+    "blurb": "Plain, modern girl built to showcase realistic lip sync. Clean and simple.",
+    "model": "models/kei/kei_basic_free.model3.json",
+    "mouth": "ParamMouthOpenY",
+    "zoom": 1.0,
+    "y": 0,
+    "credit": "Kei © Live2D Inc.",
+    "emotions": {}
+  },
+  "miara": {
+    "name": "Miara",
+    "blurb": "Full-body fantasy girl with a fairy companion and animated background scene.",
+    "model": "models/miara/miara_pro_t03.model3.json",
+    "mouth": "ParamMouthOpenY",
+    "zoom": 1.0,
+    "y": 0,
+    "credit": "Miara © Live2D Inc.",
+    "emotions": {}
+  }
+}

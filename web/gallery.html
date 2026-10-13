@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pick a character · anime companion</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body{background:#f8f8f3}
+    .gallery-head{max-width:1360px;margin:28px auto 8px;padding:0 34px;display:flex;flex-wrap:wrap;gap:18px;align-items:flex-end;justify-content:space-between}
+    .gallery-head h1{margin:8px 0 6px;font-size:40px}
+    .gallery-head p{margin:0;color:#7f8a75;font-size:13px;max-width:640px;line-height:1.6}
+    .toolbar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;font-size:12px;color:#6d7a62}
+    .focus-nav a{color:#6f7f61;font-size:12px;border:1px solid #dce2d3;border-radius:10px;padding:8px 10px;text-decoration:none;background:#fff}
+    .toolbar select,.toolbar button{font:inherit;border:1px solid #dce2d3;background:#fff;border-radius:10px;padding:8px 10px;color:#4d5b42}
+    .grid{position:relative;max-width:1360px;margin:18px auto 60px;padding:0 34px;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:18px}
+    #stage{position:absolute;inset:0;z-index:2;pointer-events:none}#stage canvas{display:block}
+    .card{background:#edf1e5;border-radius:22px;overflow:hidden;display:flex;flex-direction:column;border:2px solid transparent;transition:border-color .2s}
+    .card.active{border-color:#829c6d}
+    .card .view{position:relative;height:360px;cursor:pointer}
+    .card .view>div{position:absolute;inset:0}
+    .card .view canvas{display:block;width:100%;height:100%}
+    .card .loading{position:absolute;inset:0;display:grid;place-items:center;color:#98a38c;font-size:12px}
+    .card .info{padding:14px 16px 16px;background:#ffffffc9}
+    .card h3{margin:0 0 5px;font-family:Georgia,serif;font-weight:400;font-size:21px;display:flex;justify-content:space-between;align-items:center}
+    .card h3 small{font-family:"Segoe UI",sans-serif;font-size:10px;color:#8ca171;letter-spacing:1px}
+    .card p{margin:0 0 12px;font-size:12px;line-height:1.55;color:#7d8873;min-height:37px}
+    .card .actions{display:flex;gap:8px}
+    .card .zoom{flex:1;text-align:center;font-size:12px;color:#6f7f61;border:1px solid #dce2d3;border-radius:10px;padding:9px;text-decoration:none}
+    .card button{flex:1;border:1px solid #dce2d3;border-radius:10px;padding:9px;font-size:12px;background:transparent;color:#6f7f61}
+    .card button.choose{background:#829c6d;color:#fff;border-color:#829c6d}
+    .card .credit{font-size:9px;color:#a0a896;margin-top:9px}
+    .focus-nav{display:none}
+    .focus-mode .grid{grid-template-columns:1fr;max-width:760px}
+    .focus-mode .card .view{height:min(72vh,760px)}
+    .focus-mode .focus-nav{display:flex;gap:8px}
+    .focus-mode #framingHint{display:none}
+  </style>
+  <script defer src="vendor/live2dcubismcore.min.js"></script>
+  <script defer src="vendor/pixi.min.js"></script>
+  <script defer src="vendor/cubism4.min.js"></script>
+  <script defer src="core.js"></script>
+  <script defer src="gallery.js"></script>
+</head>
+<body>
+  <div class="gallery-head">
+    <div><span class="eyebrow">FREE LIVE2D MODELS</span><h1>Who should live on your desktop?</h1>
+      <p>All of these are official Live2D sample characters, free to use under the Live2D Free Material License. Click a character to poke her, or open a close-up. Press <b>Say hi</b> to hear the selected voice on her. <b>Choose</b> makes her your companion.</p></div>
+    <div class="toolbar">
+      <label>Preview voice <select id="voice"></select></label>
+      <span class="focus-nav"><a id="prev" class="zoom-link">‹ Previous</a><a href="gallery.html">All characters</a><a id="next">Next ›</a></span>
+      <a href="/" class="credits-link" style="margin:0">← Back to chat</a>
+    </div>
+  </div>
+  <div id="error" role="alert" hidden style="max-width:1290px;margin:auto"></div>
+  <div class="grid" id="grid"><div id="stage"></div></div>
+</body>
+</html>

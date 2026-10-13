@@ -1,0 +1,9 @@
+{
+  "name": "anime-companion-desktop",
+  "version": "2.0.0",
+  "private": true,
+  "description": "Transparent always-on-top desktop overlay for the anime companion.",
+  "main": "main.js",
+  "scripts": { "start": "electron ." },
+  "devDependencies": { "electron": "^44.4.5" }
+}

@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Companion overlay · anime companion</title>
+  <link rel="stylesheet" href="overlay.css">
+  <script defer src="vendor/live2dcubismcore.min.js"></script>
+  <script defer src="vendor/pixi.min.js"></script>
+  <script defer src="vendor/cubism4.min.js"></script>
+  <script defer src="core.js"></script>
+  <script defer src="overlay.js"></script>
+</head>
+<body>
+  <div id="bubble" hidden><div id="bubbleText"></div><div id="bubbleNote"></div></div>
+  <div id="stage"></div>
+  <div id="status" hidden></div>
+  <div id="toolbar" role="toolbar" aria-label="Companion controls">
+    <button id="talk" title="Talk (Ctrl+Alt+Space)" aria-label="Talk"><svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></button>
+    <button id="type" title="Type a message (Ctrl+Alt+T)" aria-label="Type"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 10h.01M11 10h.01M15 10h.01M7 14h10"/></svg></button>
+    <button id="look" title="Look at my screen (Ctrl+Alt+L)" aria-label="Look at my screen"><svg viewBox="0 0 24 24"><path d="M2 12s3.6-7 10-7 10 7 10 7-3.6 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/></svg></button>
+    <button id="panel" title="Chat history & settings" aria-label="Chat history and settings"><svg viewBox="0 0 24 24"><path d="M4 5h16v11H9l-5 4z"/></svg></button>
+    <button id="hide" title="Hide (Ctrl+Alt+H brings her back)" aria-label="Hide"><svg viewBox="0 0 24 24"><path d="M6 12h12"/></svg></button>
+  </div>
+  <form id="composer" hidden><input id="input" maxlength="4000" placeholder="Say something…" autocomplete="off"><button aria-label="Send">↑</button></form>
+</body>
+</html>

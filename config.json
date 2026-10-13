@@ -1,0 +1,216 @@
+{
+  "_help": "Swap any part by changing an 'active' value to one of the preset names below (or pick it in Settings). Add your own presets by copying one. API keys go in .env (or Settings -> API keys), never in this file.",
+  "character": {
+    "name": "",
+    "_name_help": "Leave empty to use the avatar's own name.",
+    "personality_file": "personality.md",
+    "emotion_tags": true
+  },
+  "avatar": {
+    "active": "mao"
+  },
+  "llm": {
+    "active": "local-qwen",
+    "presets": {
+      "gpt-6-luna": {
+        "label": "ChatGPT · GPT-6 Luna (fast, cheap, sees images)",
+        "provider": "openai",
+        "base_url": "https://api.openai.com/v1",
+        "api_key_env": "OPENAI_API_KEY",
+        "model": "gpt-6-luna",
+        "vision": true,
+        "image_detail": "auto",
+        "params": {
+          "reasoning_effort": "none",
+          "max_completion_tokens": 400
+        }
+      },
+      "pi-chatgpt-luna": {
+        "label": "ChatGPT subscription · GPT-6 Luna via pi (no API key)",
+        "provider": "pi",
+        "pi_provider": "openai-codex",
+        "model": "gpt-6-luna",
+        "thinking": "off",
+        "vision": true,
+        "_help": "Uses the ChatGPT login stored in pi (run `pi`, then /login once). Unofficial: OpenAI tolerates subscription use in third-party tools but hasn't promised it."
+      },
+      "pi-chatgpt-sol": {
+        "label": "ChatGPT subscription · GPT-6 Sol via pi (no API key)",
+        "provider": "pi",
+        "pi_provider": "openai-codex",
+        "model": "gpt-6-sol",
+        "thinking": "off",
+        "vision": true
+      },
+      "gpt-6-sol": {
+        "label": "ChatGPT · GPT-6 Sol (smarter, pricier)",
+        "provider": "openai",
+        "base_url": "https://api.openai.com/v1",
+        "api_key_env": "OPENAI_API_KEY",
+        "model": "gpt-6-sol",
+        "vision": true,
+        "params": {
+          "reasoning_effort": "none",
+          "max_completion_tokens": 400
+        }
+      },
+      "claude-sonnet": {
+        "label": "Claude Sonnet 5",
+        "provider": "anthropic",
+        "api_key_env": "ANTHROPIC_API_KEY",
+        "model": "claude-sonnet-5",
+        "vision": true,
+        "params": {
+          "max_tokens": 1024
+        }
+      },
+      "openrouter": {
+        "label": "OpenRouter (any model — edit 'model')",
+        "provider": "openai",
+        "base_url": "https://openrouter.ai/api/v1",
+        "api_key_env": "OPENROUTER_API_KEY",
+        "model": "openai/gpt-6-luna",
+        "vision": true,
+        "params": {
+          "max_tokens": 1000
+        }
+      },
+      "ollama": {
+        "label": "Ollama on this PC (edit 'model')",
+        "provider": "openai",
+        "base_url": "http://127.0.0.1:11434/v1",
+        "model": "qwen3:8b",
+        "vision": false,
+        "params": {
+          "max_tokens": 400,
+          "temperature": 0.8
+        }
+      },
+      "local-qwen": {
+        "label": "Offline · Qwen3 1.7B (no internet, weaker, no vision)",
+        "provider": "llama_cpp",
+        "model_path": "models/chat.gguf",
+        "vision": false,
+        "threads": 4,
+        "context": 4096,
+        "extra_args": [
+          "--reasoning-budget",
+          "0"
+        ],
+        "params": {
+          "max_tokens": 200,
+          "temperature": 0.8,
+          "top_p": 0.9,
+          "chat_template_kwargs": {
+            "enable_thinking": false
+          }
+        }
+      },
+      "gemini": {
+        "label": "Gemini API key (free tier available)",
+        "provider": "openai",
+        "base_url": "https://generativelanguage.googleapis.com/v1beta/openai",
+        "api_key_env": "GEMINI_API_KEY",
+        "model": "gemini-flash-latest",
+        "vision": true,
+        "params": {
+          "max_tokens": 1000
+        },
+        "_help": "Key from https://aistudio.google.com/apikey. A Gemini *subscription* can't be used: Google bans third-party use of Gemini CLI/Antigravity logins."
+      }
+    }
+  },
+  "voice": {
+    "active": "piper-lessac",
+    "speed": 1.0,
+    "presets": {
+      "edge-ana": {
+        "label": "Ana · free youthful US girl voice (Microsoft neural, online)",
+        "provider": "edge",
+        "voice": "en-US-AnaNeural",
+        "rate_percent": 0,
+        "pitch": "+0Hz"
+      },
+      "edge-maisie": {
+        "label": "Maisie · free youthful UK girl voice (Microsoft neural, online)",
+        "provider": "edge",
+        "voice": "en-GB-MaisieNeural",
+        "rate_percent": 0,
+        "pitch": "+0Hz"
+      },
+      "elevenlabs": {
+        "label": "ElevenLabs · your designed voice",
+        "provider": "elevenlabs",
+        "api_key_env": "ELEVENLABS_API_KEY",
+        "voice_id": "PASTE_VOICE_ID_HERE",
+        "model": "eleven_flash_v2_5",
+        "voice_settings": {
+          "stability": 0.45,
+          "similarity_boost": 0.8,
+          "style": 0.3,
+          "speed": 1.0
+        }
+      },
+      "openai-tts": {
+        "label": "OpenAI TTS · style set by instructions",
+        "provider": "openai",
+        "api_key_env": "OPENAI_API_KEY",
+        "model": "gpt-4o-mini-tts",
+        "voice": "coral",
+        "instructions": "Voice of a bubbly, high-pitched young anime girl: bright, playful, curious and warm. Quick, bouncy delivery with lots of smiles in the voice."
+      },
+      "piper-lessac": {
+        "label": "Offline · Piper Lessac (the old voice)",
+        "provider": "piper",
+        "model_path": "models/voice.onnx",
+        "length_scale": 0.94
+      }
+    }
+  },
+  "hearing": {
+    "active": "local-whisper",
+    "presets": {
+      "local-whisper": {
+        "label": "Offline · Faster-Whisper base.en",
+        "provider": "faster_whisper",
+        "model_path": "models/whisper",
+        "language": "en",
+        "threads": 4
+      },
+      "openai-transcribe": {
+        "label": "OpenAI transcription (more accurate, any language)",
+        "provider": "openai",
+        "api_key_env": "OPENAI_API_KEY",
+        "model": "gpt-4o-mini-transcribe"
+      }
+    }
+  },
+  "screen": {
+    "mode": "tool",
+    "_mode_help": "off = never looks; tool = she decides when to look (when you mention what's on screen); always = attaches your current window to every message.",
+    "share_window_title": true,
+    "proactive": false,
+    "proactive_interval_seconds": 120,
+    "max_width": 1280,
+    "jpeg_quality": 70
+  },
+  "memory": {
+    "context_messages": 30
+  },
+  "ui": {
+    "mode": "desktop",
+    "_mode_help": "desktop = transparent always-on-top companion (Electron); browser = open the web page instead."
+  },
+  "desktop": {
+    "width": 380,
+    "height": 620,
+    "always_on_top": true,
+    "stop_server_on_quit": true,
+    "hotkeys": {
+      "talk": "Control+Alt+Space",
+      "look": "Control+Alt+L",
+      "type": "Control+Alt+T",
+      "toggle": "Control+Alt+H"
+    }
+  }
+}

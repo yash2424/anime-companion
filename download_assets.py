@@ -1,6 +1,6 @@
 """Download original upstream assets; run once with internet access.
 
-Afterwards run `npm install` in desktop/ (it may warn about the Node version; the Electron binary comes from here).
+This also installs the Electron desktop shell, so `npm install` is not needed.
 """
 import concurrent.futures
 import hashlib

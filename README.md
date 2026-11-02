@@ -40,12 +40,9 @@ Everything runs locally on `127.0.0.1:8765`. To stop, use the tray icon → Quit
 
 ### Choosing her brain on first run
 
-`config.json` defaults to `pi-chatgpt-luna`, which uses a ChatGPT subscription through the [pi](https://pi.dev) agent (see below). Without pi installed and logged in, open **Chat history & settings** (hover over her → speech-bubble icon, or right-click the tray icon) and choose one of these:
+Out of the box she runs **fully offline**: the brain is **Qwen3 1.7B** (`local-qwen`) and the voice is **Piper** (`piper-lessac`), so no account or API key is needed. The offline brain is small: replies are simpler and it can't see your screen.
 
-- **Offline · Qwen3 1.7B**: works right away with no key or account (slower and simpler replies, and it can't see your screen), or
-- any API brain (for example **Gemini**, which has a free tier), with the key pasted under **API keys**.
-
-For the offline voice, pick **Piper** under Voice. The default Edge voice is free but needs internet.
+For a smarter companion, open **Chat history & settings** (hover over her → speech-bubble icon, or right-click the tray icon) and pick another brain, for example **Gemini** (free tier), with its key pasted under **API keys**, or a ChatGPT subscription through pi (see below). The **Edge** voices sound better than Piper and are free, but need internet.
 
 ### On the desktop
 
@@ -69,8 +66,8 @@ Each swappable part has presets and an `active` value. You can pick a preset in 
 
 | Part | Presets included | Where the code lives |
 |---|---|---|
-| **Brain** (`llm`) | `pi-chatgpt-luna` (default, ChatGPT subscription via pi), `pi-chatgpt-sol`, `gpt-6-luna` / `gpt-6-sol` (OpenAI API key), `gemini` (Gemini API key, free tier), `claude-sonnet`, `openrouter` (any model), `ollama` (local), `local-qwen` (offline) | `companion/llm.py`, `companion/pi_bridge.ts` |
-| **Voice** (`voice`) | `edge-ana` (default, free youthful US girl), `edge-maisie` (UK girl), `elevenlabs` (your designed voice), `openai-tts`, `piper-lessac` (offline, old voice) | `companion/tts.py` |
+| **Brain** (`llm`) | `pi-chatgpt-luna` (ChatGPT subscription via pi), `pi-chatgpt-sol`, `gpt-6-luna` / `gpt-6-sol` (OpenAI API key), `gemini` (Gemini API key, free tier), `claude-sonnet`, `openrouter` (any model), `ollama` (local), `local-qwen` (default, offline) | `companion/llm.py`, `companion/pi_bridge.ts` |
+| **Voice** (`voice`) | `edge-ana` (free youthful US girl, needs internet), `edge-maisie` (UK girl), `elevenlabs` (your designed voice), `openai-tts`, `piper-lessac` (default, offline) | `companion/tts.py` |
 | **Hearing** (`hearing`) | `local-whisper` (offline), `openai-transcribe` | `companion/stt.py` |
 | **Character** (`avatar`) | `mao`, `koharu`, `tsumiki`, `hibiki`, `izumi`, `epsilon`, `kei`, `shizuku`, `zundamon`, `miara` | `web/models/avatars.json` |
 | **Personality** | `personality.md` (`{name}` becomes the character's name) | — |
@@ -85,7 +82,7 @@ API keys live in `.env` (see `.env.example`), or you can paste them in Settings.
 
 ## Using a subscription instead of an API key (pi)
 
-The `pi-*` brains run the [pi coding agent](https://pi.dev) in the background (RPC mode) and use whatever login pi has. Here that's `openai-codex`, i.e. your ChatGPT plan. All of pi's own tools, skills and extensions are switched off for this. It only loads `companion/pi_bridge.ts`, which gives the model the companion's personality and the `look_at_screen` tool. To use another pi login, copy a `pi-*` preset and change `pi_provider` / `model` (see `pi --list-models`).
+The `pi-*` brains run the [pi coding agent](https://pi.dev) in the background (RPC mode) and use whatever login pi has. The included presets use pi's `openai-codex` login, i.e. a ChatGPT plan: install pi, run `pi` in PowerShell, type `/login`, then pick a `pi-*` brain in Settings. All of pi's own tools, skills and extensions are switched off for this. It only loads `companion/pi_bridge.ts`, which gives the model the companion's personality and the `look_at_screen` tool. To use another pi login, copy a `pi-*` preset and change `pi_provider` / `model` (see `pi --list-models`).
 
 This is unofficial: OpenAI tolerates ChatGPT plans in third-party tools but hasn't promised to keep allowing it. If it stops working, switch to `gpt-6-luna` with an API key. **Don't** use pi's Google Gemini CLI / Antigravity logins for this: Google bans accounts that use those subscriptions in third-party tools. Use the `gemini` preset with an API key instead.
 

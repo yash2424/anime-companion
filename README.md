@@ -2,12 +2,50 @@
 
 A Live2D anime girl who lives on your desktop. She talks with a reasoning model, speaks with a voice you choose, hears you through your microphone, and can see the window you're working in.
 
-## Start
+## Requirements
 
-- **Start Companion.vbs**: starts everything and puts her on your desktop (a transparent, always-on-top window).
+- Windows 10 or 11 (64-bit)
+- [Python 3.12](https://www.python.org/downloads/) (the "py" launcher is installed with it)
+- An internet connection for the one-time setup, and about 3 GB of free disk space for models and runtimes
+- Optional: an API key (OpenAI, Gemini, Anthropic, OpenRouter) or the [pi](https://pi.dev) agent, for a smarter brain than the offline model
+
+## Setup (once)
+
+Open PowerShell in the project folder and run:
+
+```powershell
+py -3.12 -m venv .venv
+.venv\Scripts\python.exe -m pip install -r requirements-lock.txt
+.venv\Scripts\python.exe download_assets.py
+```
+
+1. The first line creates the Python environment. It must be called `.venv` and sit in the project folder, because the launchers look for it there.
+2. The second line installs the Python packages (speech recognition, offline voice and so on).
+3. The third line downloads everything too large or third-party to ship: the Live2D characters, the offline chat model (Qwen3 1.7B with llama.cpp), the offline voice (Piper), the speech recognition model (Whisper) and the desktop shell (Electron). It can be run again safely and skips files it already has. You don't need `npm install`, because the script fetches Electron directly.
+
+## Run
+
+- **Start Companion.vbs** (double-click): starts everything and puts her on your desktop in a transparent, always-on-top window.
 - **Open in Browser.vbs**: the same companion as a full web page instead.
 
-Her brain defaults to **your ChatGPT subscription through pi** (no API key needed). pi is installed natively on Windows and already logged in. If that login ever expires, run `pi` in PowerShell and type `/login`. To use an API key instead, pick another brain in **Chat history & settings** (hover over her → speech-bubble icon, or right-click the tray icon) and paste the key under **API keys**.
+The same from a terminal, which is handy when something goes wrong:
+
+```powershell
+.venv\Scripts\python.exe launch.py             # desktop overlay
+.venv\Scripts\python.exe launch.py --browser   # web page
+.venv\Scripts\python.exe server.py             # server only, then open http://127.0.0.1:8765
+```
+
+Everything runs locally on `127.0.0.1:8765`. To stop, use the tray icon → Quit, or Settings → "Close companion & release memory".
+
+### Choosing her brain on first run
+
+`config.json` defaults to `pi-chatgpt-luna`, which uses a ChatGPT subscription through the [pi](https://pi.dev) agent (see below). Without pi installed and logged in, open **Chat history & settings** (hover over her → speech-bubble icon, or right-click the tray icon) and choose one of these:
+
+- **Offline · Qwen3 1.7B**: works right away with no key or account (slower and simpler replies, and it can't see your screen), or
+- any API brain (for example **Gemini**, which has a free tier), with the key pasted under **API keys**.
+
+For the offline voice, pick **Piper** under Voice. The default Edge voice is free but needs internet.
 
 ### On the desktop
 
